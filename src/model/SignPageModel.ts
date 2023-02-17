@@ -30,8 +30,12 @@ export default class SignPageModel {
         this.valueSetService.setStringValue(this.creatorNameElement, personalDataDto.name);
         this.valueSetService.setStringValue(this.creatorAddressElement, personalDataDto.address);
         this.valueSetService.setStringValue(this.signerNameElement, personalDataDto.name);
-        this.valueSetService.setStringValue(this.phoneNumberElement, personalDataDto.phoneNumber);
-        this.valueSetService.setStringValue(this.personalCodeElement, personalDataDto.personalCode);
         this.valueSetService.setRadioChecked(this.mobileSignatureChoiceElement);
+        setTimeout(
+            () => {
+                this.valueSetService.setStringValue(this.phoneNumberElement, personalDataDto.phoneNumber);
+                this.valueSetService.setStringValue(this.personalCodeElement, personalDataDto.personalCode);
+            }, 500
+        )
     }
 }
