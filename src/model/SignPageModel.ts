@@ -20,7 +20,7 @@ export default class SignPageModel {
         const signerBlock = document.querySelectorAll('.signer-separator').item(2);
         this.signerNameElement = signerBlock.querySelector('input')!;
         /* Pasirinkite pasirašymo tipą */
-        const signatureTypeBlock = document.querySelectorAll('.signer-separator').item(4);
+        const signatureTypeBlock = document.querySelectorAll('.signer-separator').item(5);
         this.mobileSignatureChoiceElement = signatureTypeBlock.querySelectorAll('input').item(1);
         this.phoneNumberElement = signatureTypeBlock.querySelectorAll('input').item(2);
         this.personalCodeElement = signatureTypeBlock.querySelectorAll('input').item(3);
