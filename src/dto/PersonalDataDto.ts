@@ -1,5 +1,7 @@
 export default class PersonalDataDto {
-    name!: string;
+    fullName!: string;
+    firstName!: string;
+    lastName!: string;
     phoneNumber!: string;
     personalCode!: string;
     address!: string;

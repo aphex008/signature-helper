@@ -15,3 +15,4 @@ const loadPersonalData = () => {
 chrome.storage.local.onChanged.addListener(loadPersonalData);
 
 loadPersonalData();
+

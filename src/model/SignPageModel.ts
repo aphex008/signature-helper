@@ -3,10 +3,8 @@ import ValueSetService from "../service/ValueSetService";
 
 export default class SignPageModel {
     creatorNameElement: HTMLInputElement;
-    signerNameElement: HTMLInputElement;
-    mobileSignatureChoiceElement: HTMLInputElement;
-    phoneNumberElement: HTMLInputElement;
-    personalCodeElement: HTMLInputElement;
+    signerFirstNameElement: HTMLInputElement;
+    signerLastNameElement: HTMLInputElement;
     creatorAddressElement: HTMLInputElement;
     valueSetService: ValueSetService;
 
@@ -18,24 +16,14 @@ export default class SignPageModel {
         this.creatorNameElement = creatorBlock.querySelectorAll('input').item(2);
         /* Pasirašantis asmuo */
         const signerBlock = document.querySelectorAll('.signer-separator').item(2);
-        this.signerNameElement = signerBlock.querySelector('input')!;
-        /* Pasirinkite pasirašymo tipą */
-        const signatureTypeBlock = document.querySelectorAll('.signer-separator').item(5);
-        this.mobileSignatureChoiceElement = signatureTypeBlock.querySelectorAll('input').item(1);
-        this.phoneNumberElement = signatureTypeBlock.querySelectorAll('input').item(2);
-        this.personalCodeElement = signatureTypeBlock.querySelectorAll('input').item(3);
+        this.signerFirstNameElement = signerBlock.querySelectorAll('input')[0];
+        this.signerLastNameElement = signerBlock.querySelectorAll('input')[1];
     }
 
     loadPersonalData(personalDataDto: PersonalDataDto) {
-        this.valueSetService.setStringValue(this.creatorNameElement, personalDataDto.name);
+        this.valueSetService.setStringValue(this.creatorNameElement, personalDataDto.fullName);
         this.valueSetService.setStringValue(this.creatorAddressElement, personalDataDto.address);
-        this.valueSetService.setStringValue(this.signerNameElement, personalDataDto.name);
-        this.valueSetService.setRadioChecked(this.mobileSignatureChoiceElement);
-        setTimeout(
-            () => {
-                this.valueSetService.setStringValue(this.phoneNumberElement, personalDataDto.phoneNumber);
-                this.valueSetService.setStringValue(this.personalCodeElement, personalDataDto.personalCode);
-            }, 500
-        )
+        this.valueSetService.setStringValue(this.signerFirstNameElement, personalDataDto.firstName);
+        this.valueSetService.setStringValue(this.signerLastNameElement, personalDataDto.lastName);
     }
 }
