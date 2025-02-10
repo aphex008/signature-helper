@@ -1,0 +1,8 @@
+services:
+  webpack:
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    # The command that will be run by default when the container starts
+    command: npm run build
